@@ -139,6 +139,14 @@ describe('Flag Routes Integration Tests', () => {
       expect(res.headers['content-type']).toMatch(/application\/json/);
       expect(res.body).toHaveProperty('error');
     });
+
+    it('should return 400 for a whitespace-only key', async () => {
+      const res = await request(app).get('/flags/%20');
+
+      expect(res.status).toBe(400);
+      expect(res.headers['content-type']).toMatch(/application\/json/);
+      expect(res.body).toHaveProperty('error');
+    });
   });
 
   describe('PATCH /flags/:key', () => {
