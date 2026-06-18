@@ -14,7 +14,7 @@ const config: Config = {
     '!src/server.ts',
   ],
   coverageDirectory: 'coverage',
-  coverageReporters: ['text', 'lcov'],
+  coverageReporters: ['text', 'lcov', 'json-summary'],
 };
 
 export default config;
