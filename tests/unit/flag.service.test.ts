@@ -1,7 +1,7 @@
 import { FlagService } from '../../src/services/flag.service';
 import { InMemoryFlagRepository } from '../../src/repositories/in-memory-flag.repository';
 import { ConflictError, NotFoundError } from '../../src/types/errors';
-import { CreateFlagInput, UpdateFlagInput, EvaluationResult } from '../../src/types/flag.types';
+import { CreateFlagInput, UpdateFlagInput } from '../../src/types/flag.types';
 
 describe('FlagService', () => {
   let service: FlagService;
@@ -129,6 +129,7 @@ describe('FlagService', () => {
       expect(result.enabled).toBe(false);
       expect(result.allowlist).toEqual([]);
       expect(result.rolloutPercentage).toBe(50);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       expect((result as any).unknownField).toBeUndefined();
     });
 
